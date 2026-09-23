@@ -5,6 +5,7 @@
   --paper:    #F0EFE8;   /* page background */
   --paper-2:  #E6E4D9;   /* slightly darker panel background */
   --background_accent: #4f5ca2;
+  --side-accent: #D9825B;
   --ink:      #1B1B18;   /* primary text */
   --ink-soft: #55534A;   /* secondary text */
   --accent:   #6B4A2F;   /* umber — links, underlines */
@@ -31,6 +32,27 @@ body {
   font-size: 17px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 72px;
+  bottom: 0;
+  width: 12px;
+  z-index: 11;
+  pointer-events: none;
+}
+
+body::before {
+  left: 0;
+  background: var(--side-accent);
+}
+
+body::after {
+  right: 0;
+  background: var(--side-accent);
 }
 
 h1, h2, h3 {
@@ -73,6 +95,7 @@ a {
   z-index: 10;
   background: var(--background_accent);
   border-bottom: 1px solid var(--line);
+  box-shadow: 0 3px 8px rgba(27, 27, 24, 0.16);
 }
 
 .masthead-row {
@@ -337,4 +360,5 @@ a {
   .nav { gap: 16px; }
   .hero { padding: 64px 24px 56px; }
   .about, .work, .contact { padding: 64px 24px; }
+  body::before, body::after { width: 6px; }
 }
