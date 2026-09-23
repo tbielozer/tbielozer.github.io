@@ -4,6 +4,7 @@
 :root {
   --paper:    #F0EFE8;   /* page background */
   --paper-2:  #E6E4D9;   /* slightly darker panel background */
+  --background_accent: #4f5ca2;
   --ink:      #1B1B18;   /* primary text */
   --ink-soft: #55534A;   /* secondary text */
   --accent:   #6B4A2F;   /* umber — links, underlines */
@@ -70,7 +71,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: var(--paper);
+  background: var(--background_accent);
   border-bottom: 1px solid var(--line);
 }
 
