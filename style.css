@@ -95,7 +95,7 @@ a {
 
 .nav a {
   font-size: 0.95rem;
-  color: var(--ink-soft);
+  color: var(--ink);
   padding-bottom: 2px;
   border-bottom: 1px solid transparent;
 }
