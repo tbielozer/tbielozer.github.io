@@ -11,7 +11,8 @@
   --accent:   #6B4A2F;   /* umber — links, underlines */
   --accent-2: #7C8A54;   /* olive — tags, hover state */
   --line:     #C9C6B8;   /* hairline borders */
-  --side-width: clamp(12px, 5vw, 72px);
+  --side-width: clamp(6px, 5vw, 72px);
+  --content-gutter: max(24px, calc(var(--side-width) + 12px));
 
   --serif: "Fraunces", Georgia, serif;
   --sans:  "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -27,7 +28,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--paper);
+  background: var(--side-accent);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 17px;
@@ -35,25 +36,22 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  top: 72px;
-  bottom: 0;
-  width: var(--side-width);
-  z-index: 11;
-  pointer-events: none;
+.banner {
+  position: relative;
+  z-index: 1;
+  margin: 0 var(--side-width);
+  width: calc(100% - (var(--side-width) * 2));
+  min-width: 0;
+  background: var(--paper);
 }
 
-body::before {
-  left: 0;
-  background: var(--side-accent);
-}
-
-body::after {
-  right: 0;
-  background: var(--side-accent);
+.banner h1,
+.banner h2,
+.banner h3,
+.banner p,
+.banner a,
+.banner li {
+  overflow-wrap: anywhere;
 }
 
 h1, h2, h3 {
@@ -75,7 +73,7 @@ a {
 .wrap {
   max-width: var(--wrap);
   margin: 0 auto;
-  padding: 0 max(32px, calc(var(--side-width) + 16px));
+  padding: 0 var(--content-gutter);
 }
 
 :focus-visible {
@@ -95,8 +93,8 @@ a {
   top: 0;
   z-index: 10;
   background: var(--background_accent);
-  border-bottom: 1px solid var(--line);
-  box-shadow: 0 3px 8px rgba(27, 27, 24, 0.16);
+  /* border-bottom: 1px solid var(--line); */
+  box-shadow: 0 4px 8px rgba(27, 27, 24, 0.16);
 }
 
 .masthead-row {
@@ -132,9 +130,7 @@ a {
 /* ==========================================================================
    HERO
    ========================================================================== */
-.hero {
-  padding: 96px 32px 88px;
-}
+.hero { padding: 96px var(--content-gutter) 88px; }
 
 .hero-grid {
   display: grid;
@@ -143,6 +139,13 @@ a {
   align-items: end;
   border-bottom: 1px solid var(--line);
   padding-bottom: 56px;
+}
+
+.hero-grid > *,
+.about-grid > *,
+.project > *,
+.contact-grid > * {
+  min-width: 0;
 }
 
 .hero-title {
@@ -193,7 +196,7 @@ a {
 /* ==========================================================================
    ABOUT
    ========================================================================== */
-.about { padding: 88px 32px; }
+.about { padding: 88px var(--content-gutter); }
 
 .about-grid {
   display: grid;
@@ -230,7 +233,7 @@ a {
 /* ==========================================================================
    WORK / PROJECTS
    ========================================================================== */
-.work { padding: 88px 32px; }
+.work { padding: 88px var(--content-gutter); }
 
 .project {
   display: grid;
@@ -294,7 +297,7 @@ a {
    CONTACT
    ========================================================================== */
 .contact {
-  padding: 88px 32px 96px;
+  padding: 88px var(--content-gutter) 96px;
 }
 
 .contact-grid {
@@ -359,7 +362,10 @@ a {
   }
 
   .nav { gap: 16px; }
-  .hero { padding: 64px 24px 56px; }
-  .about, .work, .contact { padding: 64px 24px; }
-  body::before, body::after { width: 6px; }
+  .section-head h2 { white-space: normal; }
+  .hero { padding: 64px var(--content-gutter) 56px; }
+  .about, .work, .contact {
+    padding-left: var(--content-gutter);
+    padding-right: var(--content-gutter);
+  }
 }
