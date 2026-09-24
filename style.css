@@ -36,6 +36,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* White content panel that sits over the orange page background. */
 .banner {
   position: relative;
   z-index: 1;
@@ -70,6 +71,7 @@ a {
   text-decoration: none;
 }
 
+/* Shared width and side spacing for the header and page sections. */
 .wrap {
   max-width: var(--wrap);
   margin: 0 auto;
@@ -88,6 +90,7 @@ a {
 /* ==========================================================================
    MASTHEAD
    ========================================================================== */
+/* Top navigation bar with your name and page links. */
 .masthead {
   position: sticky;
   top: 0;
@@ -97,6 +100,7 @@ a {
   box-shadow: 0 4px 8px rgba(27, 27, 24, 0.16);
 }
 
+/* Horizontal layout inside the top navigation bar. */
 .masthead-row {
   display: flex;
   align-items: center;
@@ -104,12 +108,14 @@ a {
   height: 72px;
 }
 
+/* Your name displayed in the top-left corner. */
 .wordmark {
   font-family: var(--serif);
   font-weight: 600;
   font-size: 1.25rem;
 }
 
+/* Navigation links displayed in the top-right corner. */
 .nav {
   display: flex;
   gap: 28px;
@@ -130,6 +136,7 @@ a {
 /* ==========================================================================
    HERO
    ========================================================================== */
+/* Intro area with the main headline and short description. */
 .hero { padding: 96px var(--content-gutter) 88px; }
 
 .hero-grid {
@@ -175,6 +182,7 @@ a {
 /* ==========================================================================
    SECTION HEADS
    ========================================================================== */
+/* Heading row used at the start of About, Work, and Contact. */
 .section-head {
   display: flex;
   align-items: baseline;
@@ -196,6 +204,7 @@ a {
 /* ==========================================================================
    ABOUT
    ========================================================================== */
+/* About section containing the bio and skills list. */
 .about { padding: 88px var(--content-gutter); }
 
 .about-grid {
@@ -233,8 +242,10 @@ a {
 /* ==========================================================================
    WORK / PROJECTS
    ========================================================================== */
+/* Work section containing the project cards and descriptions. */
 .work { padding: 88px var(--content-gutter); }
 
+/* Individual project row with media on one side and details on the other. */
 .project {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
@@ -252,6 +263,7 @@ a {
 .project-reverse .project-media { order: 2; }
 .project-reverse .project-info { order: 1; }
 
+/* Temporary project image area displaying the project number. */
 .media-placeholder {
   aspect-ratio: 4 / 3;
   background: var(--paper-2);
@@ -296,6 +308,7 @@ a {
 /* ==========================================================================
    CONTACT
    ========================================================================== */
+/* Contact section with the message and contact links. */
 .contact {
   padding: 88px var(--content-gutter) 96px;
 }
@@ -334,6 +347,7 @@ a {
 /* ==========================================================================
    FOOTER
    ========================================================================== */
+/* Footer at the bottom of the white banner. */
 .site-footer {
   padding: 24px 32px 40px;
   border-top: 1px solid var(--line);
