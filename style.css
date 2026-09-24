@@ -40,7 +40,7 @@ body::after {
   position: fixed;
   top: 72px;
   bottom: 0;
-  width: 12px;
+  width: 72px;
   z-index: 11;
   pointer-events: none;
 }
