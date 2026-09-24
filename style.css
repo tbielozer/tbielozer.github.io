@@ -11,6 +11,7 @@
   --accent:   #6B4A2F;   /* umber — links, underlines */
   --accent-2: #7C8A54;   /* olive — tags, hover state */
   --line:     #C9C6B8;   /* hairline borders */
+  --side-width: clamp(12px, 5vw, 72px);
 
   --serif: "Fraunces", Georgia, serif;
   --sans:  "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -40,7 +41,7 @@ body::after {
   position: fixed;
   top: 72px;
   bottom: 0;
-  width: 72px;
+  width: var(--side-width);
   z-index: 11;
   pointer-events: none;
 }
@@ -74,7 +75,7 @@ a {
 .wrap {
   max-width: var(--wrap);
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 max(32px, calc(var(--side-width) + 16px));
 }
 
 :focus-visible {
