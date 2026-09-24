@@ -4,7 +4,7 @@
 :root {
   --paper:    #F0EFE8;   /* page background */
   --paper-2:  #E6E4D9;   /* slightly darker panel background */
-  --background_accent: #4f5ca2;
+  --background_accent: #6F8F68;
   --side-accent: #D9825B;
   --ink:      #1B1B18;   /* primary text */
   --ink-soft: #55534A;   /* secondary text */
@@ -28,7 +28,12 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--side-accent);
+  background-color: var(--side-accent);
+  background-image: url("photos/TreeBackground.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: var(--ink);
   font-family: var(--sans);
   font-size: 17px;
