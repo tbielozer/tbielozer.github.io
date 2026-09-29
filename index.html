@@ -121,8 +121,15 @@
       </article>
 
       <article class="project project-reverse">
-        <div class="project-media" aria-hidden="true">
-          <div class="media-placeholder">02</div>
+        <div class="project-media">
+          <div class="gallery-frame">
+            <div class="gallery-empty" hidden>No project photos yet</div>
+            <img class="gallery-image" alt="" hidden />
+            <button class="gallery-prev" type="button" aria-label="Previous photo">&lt;</button>
+            <button class="gallery-next" type="button" aria-label="Next photo">&gt;</button>
+            <span class="gallery-count"></span>
+          </div>
+          <div class="gallery-images" hidden></div>
         </div>
         <div class="project-info">
           <p class="project-tags">Computer Vision · User Interface</p>
@@ -136,8 +143,15 @@
       </article>
 
       <article class="project">
-        <div class="project-media" aria-hidden="true">
-          <div class="media-placeholder">03</div>
+        <div class="project-media">
+          <div class="gallery-frame">
+            <div class="gallery-empty" hidden>No project photos yet</div>
+            <img class="gallery-image" alt="" hidden />
+            <button class="gallery-prev" type="button" aria-label="Previous photo">&lt;</button>
+            <button class="gallery-next" type="button" aria-label="Next photo">&gt;</button>
+            <span class="gallery-count"></span>
+          </div>
+          <div class="gallery-images" hidden></div>
         </div>
         <div class="project-info">
           <p class="project-tags">Embedded System Optimization · Wireless Communication</p>
@@ -153,9 +167,7 @@
       </article>
       <!-- EDIT ME: replace the three projects above with your own -->
 
-    </section>
-
-    <article class="project">
+    <article class="project project-reverse">
         <div class="project-media">
           <div class="gallery-frame">
             <img class="gallery-image"src="photos/CameraPhoto.JPG" alt="Example of photo from the camera" />
@@ -163,13 +175,7 @@
             <button class="gallery-next" type="button" aria-label="Next photo">&gt;</button>
             <span class="gallery-count">1 / 5</span>
           </div>
-          <div class="gallery-images" hidden>
-            <img src="photos/CameraPhoto.JPG" alt="Example of photo from the camera" />
-            <img src="photos/CameraFront.jpeg" alt="Front of the Simple Digital Camera" />
-            <img src="photos/CameraBack.jpeg" alt="Back of the Simple Digital Camera" />
-            <img src="photos/CameraBattery.jpeg" alt="Battery compartment of the Simple Digital Camera" />
-            <img src="photos/CameraOn.jpeg" alt="Simple Digital Camera powered on" />
-          </div>
+          <div class="gallery-images" hidden></div>
         </div>
         <div class="project-info">
           <p class="project-tags">Embedded System · Wireless Communication</p>
@@ -193,13 +199,7 @@
             <button class="gallery-next" type="button" aria-label="Next photo">&gt;</button>
             <span class="gallery-count">1 / 5</span>
           </div>
-          <div class="gallery-images" hidden>
-            <img src="photos/CameraPhoto.JPG" alt="Example of photo from the camera" />
-            <img src="photos/CameraFront.jpeg" alt="Front of the Simple Digital Camera" />
-            <img src="photos/CameraBack.jpeg" alt="Back of the Simple Digital Camera" />
-            <img src="photos/CameraBattery.jpeg" alt="Battery compartment of the Simple Digital Camera" />
-            <img src="photos/CameraOn.jpeg" alt="Simple Digital Camera powered on" />
-          </div>
+          <div class="gallery-images" hidden></div>
         </div>
         <div class="project-info">
           <p class="project-tags">Wireless Communication</p>
@@ -213,7 +213,7 @@
         </div>
       </article>
 
-      <article class="project">
+      <article class="project project-reverse">
         <div class="project-media">
           <div class="gallery-frame">
             <img class="gallery-image"src="photos/CameraPhoto.JPG" alt="Example of photo from the camera" />
@@ -221,13 +221,7 @@
             <button class="gallery-next" type="button" aria-label="Next photo">&gt;</button>
             <span class="gallery-count">1 / 5</span>
           </div>
-          <div class="gallery-images" hidden>
-            <img src="photos/CameraPhoto.JPG" alt="Example of photo from the camera" />
-            <img src="photos/CameraFront.jpeg" alt="Front of the Simple Digital Camera" />
-            <img src="photos/CameraBack.jpeg" alt="Back of the Simple Digital Camera" />
-            <img src="photos/CameraBattery.jpeg" alt="Battery compartment of the Simple Digital Camera" />
-            <img src="photos/CameraOn.jpeg" alt="Simple Digital Camera powered on" />
-          </div>
+          <div class="gallery-images" hidden></div>
         </div>
         <div class="project-info">
           <p class="project-tags">Embedded System · Wireless Communication</p>
@@ -251,13 +245,7 @@
             <button class="gallery-next" type="button" aria-label="Next photo">&gt;</button>
             <span class="gallery-count">1 / 5</span>
           </div>
-          <div class="gallery-images" hidden>
-            <img src="photos/CameraPhoto.JPG" alt="Example of photo from the camera" />
-            <img src="photos/CameraFront.jpeg" alt="Front of the Simple Digital Camera" />
-            <img src="photos/CameraBack.jpeg" alt="Back of the Simple Digital Camera" />
-            <img src="photos/CameraBattery.jpeg" alt="Battery compartment of the Simple Digital Camera" />
-            <img src="photos/CameraOn.jpeg" alt="Simple Digital Camera powered on" />
-          </div>
+          <div class="gallery-images" hidden></div>
         </div>
         <div class="project-info">
           <p class="project-tags">Signal Processing · Embedded System · PCB Design</p>
@@ -270,6 +258,8 @@
           <a class="project-link" href="#">View case study</a>
         </div>
       </article>
+
+    </section>
 
     <!-- ============ CONTACT ============ -->
     <section id="contact" class="contact wrap">
@@ -297,20 +287,53 @@
   </div>
 
   <script>
-    const galleryImage = document.querySelector('.gallery-image');
-    const galleryCount = document.querySelector('.gallery-count');
-    const galleryImages = [...document.querySelectorAll('.gallery-images img')];
-    let galleryIndex = 0;
+    document.querySelectorAll('.project').forEach((project) => {
+      const frame = project.querySelector('.gallery-frame');
+      const image = frame.querySelector('.gallery-image');
+      let emptyState = frame.querySelector('.gallery-empty');
+      const count = frame.querySelector('.gallery-count');
+      const previous = frame.querySelector('.gallery-prev');
+      const next = frame.querySelector('.gallery-next');
+      const images = [...project.querySelectorAll('.gallery-images img')];
+      let index = 0;
 
-    function showGalleryImage(index) {
-      galleryIndex = (index + galleryImages.length) % galleryImages.length;
-      galleryImage.src = galleryImages[galleryIndex].src;
-      galleryImage.alt = galleryImages[galleryIndex].alt;
-      galleryCount.textContent = `${galleryIndex + 1} / ${galleryImages.length}`;
-    }
+      if (images.length === 0) {
+        if (!emptyState) {
+          emptyState = document.createElement('div');
+          emptyState.className = 'gallery-empty';
+          emptyState.textContent = 'No project photos yet';
+          frame.prepend(emptyState);
+        }
+        image.hidden = true;
+        emptyState.hidden = false;
+        previous.hidden = true;
+        next.hidden = true;
+        count.hidden = true;
+        return;
+      }
 
-    document.querySelector('.gallery-prev').addEventListener('click', () => showGalleryImage(galleryIndex - 1));
-    document.querySelector('.gallery-next').addEventListener('click', () => showGalleryImage(galleryIndex + 1));
+      function showImage(nextIndex) {
+        index = (nextIndex + images.length) % images.length;
+        image.src = images[index].src;
+        image.alt = images[index].alt;
+        image.hidden = false;
+        count.textContent = `${index + 1} / ${images.length}`;
+      }
+
+      previous.addEventListener('click', () => showImage(index - 1));
+      next.addEventListener('click', () => showImage(index + 1));
+      frame.tabIndex = 0;
+      frame.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          showImage(index - 1);
+        } else if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          showImage(index + 1);
+        }
+      });
+      showImage(index);
+    });
   </script>
 
 </body>

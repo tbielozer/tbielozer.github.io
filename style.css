@@ -286,6 +286,19 @@ a {
   border-radius: 4px;
 }
 
+.gallery-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
 .gallery-count {
   position: absolute;
   right: 12px;
@@ -327,6 +340,14 @@ a {
 .gallery-prev:hover,
 .gallery-next:hover {
   background: rgba(27, 27, 24, 0.28);
+}
+
+@media (hover: none) {
+  .gallery-prev,
+  .gallery-next {
+    opacity: 1;
+    background: rgba(27, 27, 24, 0.2);
+  }
 }
 
 /* Temporary project image area displaying the project number. */
